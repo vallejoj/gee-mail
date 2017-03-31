@@ -6,65 +6,62 @@
       window.onload = function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE.
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-				window.onload = function(){
-			// ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE.
-			// We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-			function mainFunc() {
+				function mainFunc() {
 
-				for (var i = 0; i < geemails.length; i++) {
+					for (var i = 0; i < geemails.length; i++) {
 
 
 
 
 
-					var gSender = document.createElement('div');
-					gSender.className="gSender"
-					gSender.innerHTML = 'Sender:'+' ' + geemails[i].sender;
-					box.appendChild(gSender);
-					gSender.addEventListener("click", openInbox)
+						var gSender = document.createElement('div');
+						gSender.className="gSender"
+						gSender.innerHTML = 'Sender:'+' ' + geemails[i].sender;
+					  box.appendChild(gSender);
+						gSender.addEventListener("click", openInbox)
 
-					var gDate =
-						document.createElement('div');
-					gDate.innerHTML = 'Date: ' +geemails[i].date;
-						box.appendChild(gDate)
-						;
-					var gSubject = document.createElement('div');
-					gSubject.innerHTML = 'Subject: ' + geemails[i].subject;
-					box.appendChild(gSubject)
-
-
-					var gBody = document.createElement('div');
-					gBody.innerHTML = geemails[i].body;
-					gBody.className="gBody"
-					 box.appendChild(gBody)
-
-}
+						var gDate =
+							document.createElement('div');
+						gDate.innerHTML = 'Date: ' +geemails[i].date;
+						  box.appendChild(gDate)
+							;
+						var gSubject = document.createElement('div');
+						gSubject.innerHTML = 'Subject: ' + geemails[i].subject;
+	 					box.appendChild(gSubject)
 
 
-			}
-mainFunc()
+						var gBody = document.createElement('div');
+						gBody.innerHTML = geemails[i].body;
+						gBody.className="gBody"
+						 box.appendChild(gBody)
 
-
-function openInbox() {
-
-	var gToggle = this.querySelectorAll('.gBody')[0];
-	gToggle.style.color='blue'
-	if (gToggle.style.display === 'none') {
-		gToggle.style.display = 'inline';
-	} else {
-		gToggle.style.display = 'none';
 	}
-}
+
+
+				}
+	mainFunc()
+
+
+	function openInbox() {
+
+		var gToggle = this.querySelectorAll('.gBody')[0];
+	  gToggle.style.color='blue'
+		if (gToggle.style.display === 'none') {
+			gToggle.style.display = 'inline';
+		} else {
+			gToggle.style.display = 'none';
+		}
+	}
+};
 
 
 
-
-      };
     </script>
 	</head>
 	<body>
-		<div class="container" id="main">
-	fdskfj;slkdjf;al
+		<header>Gee-Mail</header>
+		<div class="container" id="box">
+
 		</div>
 	</body>
 </html>
