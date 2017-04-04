@@ -1,67 +1,162 @@
 <html>
 	<head>
+		<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
 		<script src="js/mail-generator.js"></script>
-		<link href="css/style.css" rel="stylesheet" media="screen">
+		<script src="https://use.fontawesome.com/58a4ead1bb.js"></script>
+		<link rel="stylesheet" href="css/Indie_Flower">
+
+		<link href="css/style.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Indie+Flower|Palanquin" rel="stylesheet">
     <script>
       window.onload = function(){
-        // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE.
-        // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-				function mainFunc() {
+			box= document.createDocumentFragment();
+			function mainFunc(fragment) {
+ var gNewMessage = getNewMessage()
+				for (var i = 0; i < geemails.length; i++) {
 
-					for (var i = 0; i < geemails.length; i++) {
+					var  box = document.createElement("div");
+								box.className = "box"
+								box.addEventListener("click", openInbox)
 
-
-
-
-
-						var gSender = document.createElement('div');
-						gSender.className="gSender"
-						gSender.innerHTML = 'Sender:'+' ' + geemails[i].sender;
-					  box.appendChild(gSender);
-						gSender.addEventListener("click", openInbox)
-
-						var gDate =
-							document.createElement('div');
-						gDate.innerHTML = 'Date: ' +geemails[i].date;
-						  box.appendChild(gDate)
-							;
-						var gSubject = document.createElement('div');
-						gSubject.innerHTML = 'Subject: ' + geemails[i].subject;
-	 					box.appendChild(gSubject)
+					var gSender = document.createElement('div');
+					gSender.className="gSender"
+					gSender.innerHTML = 'Sender:'+' ' + geemails[i].sender;
+					box.appendChild(gSender);
 
 
-						var gBody = document.createElement('div');
-						gBody.innerHTML = geemails[i].body;
-						gBody.className="gBody"
-						 box.appendChild(gBody)
 
+
+
+
+					var gSubject = document.createElement('div');
+					gSubject.innerHTML = 'Subject: ' + geemails[i].subject;
+					box.appendChild(gSubject)
+
+					var gDate =
+						document.createElement('div');
+					gDate.innerHTML = ' Date: ' +geemails[i].date;
+					gDate.className='gDate'
+						box.appendChild(gDate)
+
+
+					var gBody = document.createElement('div');
+					gBody.innerHTML = geemails[i].body;
+					gBody.className="gBody"
+					gBody.style.display='none'
+					 box.appendChild(gBody)
+
+
+
+
+			fragment.appendChild(box)
+}
+
+
+return fragment
+}
+ monkey.appendChild(mainFunc(box));
+
+
+function openInbox() {
+
+	var gToggle = this.querySelectorAll('.gBody')[0];
+	gToggle.style.color='blue'
+	if (gToggle.style.display === 'none') {
+		gToggle.style.display = 'inline';
+	} else {
+		gToggle.style.display = 'none';
 	}
+}
+var x=0;
+setInterval(incoming, 5000);
+box2= document.createDocumentFragment();
+
+function incoming(fragment){
+
+	      var gNewMessage = getNewMessage()
+
+	var  box2 = document.createElement("div");
+				box2.className = "box2"
+				box2.addEventListener("click", openNewInbox)
 
 
-				}
-	mainFunc()
+				var gNewSent = document.createElement('div');
+				gNewSent.className="gNewSent"
+				gNewSent.innerHTML = 'Sender: '+gNewMessage.sender;
+				box2.appendChild(gNewSent);
+
+			var gNewSubject = document.createElement('div');
+			gNewSubject.innerHTML = 'Subject: '+ gNewMessage.subject;
+			box2.appendChild(gNewSubject)
 
 
-	function openInbox() {
+					var gNewDate =
+						document.createElement('div');
+					gNewDate.innerHTML = 'Date: '+gNewMessage.date;
+						box2.appendChild(gNewDate);
 
-		var gToggle = this.querySelectorAll('.gBody')[0];
-	  gToggle.style.color='blue'
-		if (gToggle.style.display === 'none') {
-			gToggle.style.display = 'inline';
-		} else {
-			gToggle.style.display = 'none';
-		}
+
+	var gNewBody = document.createElement('div');
+	gNewBody.className="gNewBody"
+	gNewBody.style.display='none'
+	gNewBody.style.fontFamily= 'Indie Flower'
+	gNewBody.innerHTML = gNewMessage.body;
+	 box2.appendChild(gNewBody)
+
+
+
+
+	 var gLength=document.getElementById('monkey3');
+	 gLength.className='gLength'
+	 gLength.innerHTML= x++ + geemails.length+': New Emails' ;
+
+
+
+monkey2.appendChild(box2)
+
+return fragment
+}
+monkey2.appendChild(incoming(box2));
+
+
+
+
+function openNewInbox() {
+
+	var gToggle2 = this.querySelectorAll('.gNewBody')[0];
+	gToggle2.style.color='blue'
+	if (gToggle2.style.display === 'none') {
+		gToggle2.style.display = 'inline';
+	} else {
+		gToggle2.style.display = 'none';
 	}
+}
+
+
+
+
 };
+
+
 
 
 
     </script>
 	</head>
 	<body>
-		<header>Gee-Mail</header>
-		<div class="container" id="box">
+			<div class="jumbotron">
+		<h1>GeeMail</h1>
+		<i class="fa fa-envelope-square fa-5x" id="envelope" aria-hidden="true"></i>
+				<h3 id="monkey3"></h3>
+		<div class="container" id="monkey">
 
+			<div class="container" id="monkey2">
 		</div>
+
+
+
+</div>
+
 	</body>
 </html>
